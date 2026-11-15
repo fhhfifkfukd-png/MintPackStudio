@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#17152d">
+  <title>نمونه ربات روبیکا · MintPack</title>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <main class="shell">
+    <div class="brand">M</div>
+    <h1>نمونه اتصال ربات روبیکا</h1>
+    <p class="intro">برای آزمایش در APK ساخته‌شده، در MintPack گزینه Rubika Bot Mode را فعال کنید.</p>
+    <label>نام نمایشی ربات<input id="label" value="ربات آزمایشی" maxlength="40"></label>
+    <label>توکن ربات<input id="token" type="password" autocomplete="off" placeholder="توکن روبیکا"></label>
+    <div class="actions">
+      <button id="save">ذخیره رمزنگاری‌شده</button>
+      <button id="start" class="secondary">شروع Polling</button>
+      <button id="stop" class="danger">توقف</button>
+    </div>
+    <div class="status" id="status">در انتظار بررسی پل بومی…</div>
+    <h2>ربات‌های ذخیره‌شده</h2>
+    <ul id="bots"></ul>
+    <h2>به‌روزرسانی‌های دریافتی</h2>
+    <pre id="updates">هنوز updateای دریافت نشده است.</pre>
+  </main>
+  <script src="js/app.js"></script>
+</body>
+</html>

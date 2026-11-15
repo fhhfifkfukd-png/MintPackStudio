@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MintPackTheme" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:colorAccent">#7657DF</item>
+        <item name="android:statusBarColor">#17152D</item>
+        <item name="android:navigationBarColor">#FFFFFF</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowSplashScreenBackground">#17152D</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/mintpack_splash</item>
+        <item name="android:windowSplashScreenAnimationDuration">350</item>
+    </style>
+</resources>

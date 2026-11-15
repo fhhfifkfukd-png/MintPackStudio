@@ -1,0 +1,22 @@
+[
+  "service/tests/test_api.py::test_health_requires_api_key",
+  "service/tests/test_api.py::test_inspect_rejects_invalid_archive",
+  "service/tests/test_api.py::test_inspect_zip_and_preview_headers",
+  "service/tests/test_api.py::test_preview_can_be_deleted",
+  "service/tests/test_archive.py::test_extracts_nested_index_and_keeps_relative_files",
+  "service/tests/test_archive.py::test_loose_files_support_html_css_and_js",
+  "service/tests/test_archive.py::test_missing_index_is_rejected",
+  "service/tests/test_archive.py::test_rejects_file_directory_path_collision",
+  "service/tests/test_archive.py::test_rejects_multiple_shallowest_index_files",
+  "service/tests/test_archive.py::test_rejects_symlink",
+  "service/tests/test_archive.py::test_rejects_zip_slip",
+  "service/tests/test_archive.py::test_uppercase_index_is_normalized_for_android_assets",
+  "service/tests/test_contracts.py::test_native_bridge_is_origin_scoped_and_does_not_use_legacy_interface",
+  "service/tests/test_contracts.py::test_pending_rubika_updates_are_encrypted_before_cursor_persistence",
+  "service/tests/test_contracts.py::test_polling_uses_documented_offset_id_pair_and_persists_events_first",
+  "service/tests/test_contracts.py::test_rubika_client_uses_fixed_https_api_origin",
+  "service/tests/test_contracts.py::test_rubika_mode_adds_only_required_runtime_permissions",
+  "service/tests/test_contracts.py::test_rubika_mode_overrides_optional_permissions_and_internet_flags",
+  "service/tests/test_contracts.py::test_tokens_are_kept_in_android_keystore_backed_storage",
+  "service/tests/test_contracts.py::test_version_name_cannot_escape_apk_output_path"
+]

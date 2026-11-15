@@ -1,0 +1,10 @@
+**/__pycache__
+**/.pytest_cache
+.venv
+.git
+.env
+android-sdk
+mintpack-data
+data
+*.jks
+*.keystore

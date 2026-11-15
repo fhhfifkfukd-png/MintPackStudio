@@ -1,0 +1,15 @@
+.env
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+.gradle/
+**/build/
+android-sdk/
+mintpack-data/
+data/
+*.jks
+*.keystore
+local.properties
+.idea/
+.DS_Store

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17152d">
+  <title>MintPack Studio</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#top"><span class="brand-mark">M</span><span><b>MintPack</b><small>STUDIO</small></span></a>
+      <nav>
+        <a class="nav-item active" href="#dashboard"><span>▦</span> داشبورد</a>
+        <a class="nav-item" href="#project"><span>▣</span> پروژه جدید</a>
+        <a class="nav-item" href="#settings"><span>⚙</span> تنظیمات ساخت</a>
+        <a class="nav-item" href="#rubika"><span>✦</span> حالت ربات روبیکا</a>
+      </nav>
+      <div class="side-note"><span class="dot"></span><span id="connectionText">سرویس ساخت متصل نیست</span></div>
+      <div class="sidebar-footer">نسخه توسعه‌ای 0.1.0</div>
+    </aside>
+
+    <main id="top" class="main-content">
+      <header class="topbar"><div><span class="eyebrow">ANDROID PACKAGING WORKSPACE</span><h1>ساخت اپلیکیشن جدید</h1><p>پروژه وب خود را وارد کنید و به APK واقعی تبدیل کنید.</p></div><div class="avatar">M</div></header>
+
+      <section id="dashboard" class="hero-card">
+        <div class="hero-copy"><span class="pill">● موتور ساخت Gradle</span><h2>از وب تا اندروید،<br><em>با کنترل کامل شما</em></h2><p>فایل‌های HTML، CSS و JavaScript را بسته‌بندی کنید، تنظیمات بومی را انتخاب کنید و خروجی امضاشده بگیرید.</p><a href="#project" class="hero-link">شروع ساخت <b>←</b></a></div>
+        <div class="hero-art" aria-hidden="true"><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="phone"><div class="phone-top"></div><div class="phone-app">M</div><div class="phone-lines"><i></i><i></i><i></i></div><div class="phone-button"></div></div><div class="float-chip">APK <b>✓</b></div></div>
+      </section>
+
+      <section class="section-heading" id="project"><div><span class="eyebrow">STEP 01</span><h2>ورود پروژه</h2></div><span class="muted">ZIP یا فایل HTML</span></section>
+      <section class="panel upload-panel">
+        <label class="dropzone" for="projectFiles" id="dropzone">
+          <input id="projectFiles" type="file" multiple accept=".zip,.html,.htm,.css,.js,.json,.png,.jpg,.jpeg,.webp,.svg,.woff,.woff2,.ttf,.otf">
+          <span class="upload-icon">↑</span><strong>فایل پروژه را اینجا رها کنید</strong><span>یا برای انتخاب فایل کلیک کنید</span><small>ZIP کامل پیشنهاد می‌شود · حداکثر حجم مطابق تنظیمات سرویس</small>
+        </label>
+        <div class="file-list" id="fileList"><span class="muted">هنوز فایلی انتخاب نشده است.</span></div>
+        <div class="row-actions"><button class="btn btn-secondary" id="inspectBtn" disabled>بررسی و پیش‌نمایش</button><span class="muted" id="inspectStatus">ابتدا فایل پروژه را انتخاب کنید.</span></div>
+        <div class="preview-wrap hidden" id="previewWrap"><div class="preview-head"><b>پیش‌نمایش ایزوله پروژه</b><span id="entryPath"></span></div><iframe id="previewFrame" title="پیش‌نمایش پروژه" sandbox="allow-scripts"></iframe></div>
+      </section>
+
+      <section class="section-heading" id="settings"><div><span class="eyebrow">STEP 02</span><h2>مشخصات اپلیکیشن</h2></div><span class="muted">تنظیمات پایه و ظاهری</span></section>
+      <section class="panel form-grid">
+        <label>نام برنامه<input id="appName" value="اپلیکیشن من" maxlength="48"></label>
+        <label>نام بسته (Package Name)<input id="packageName" value="com.example.mintpackapp" dir="ltr" spellcheck="false"></label>
+        <label>نسخه برنامه<input id="versionName" value="1.0.0" dir="ltr"></label>
+        <label>کد نسخه<input id="versionCode" type="number" min="1" value="1" dir="ltr"></label>
+        <label>جهت نمایش<select id="orientation"><option value="portrait">عمودی</option><option value="landscape">افقی</option><option value="sensor">چرخش خودکار</option></select></label>
+        <label>نسخه هدف اندروید<select id="targetSdk"><option value="35">Android 15 (API 35)</option><option value="36" selected>Android 16 (API 36)</option></select></label>
+        <label>رنگ نوار وضعیت<input id="statusBarColor" type="color" value="#17152d"></label>
+        <label>رنگ نوار پایین<input id="navigationBarColor" type="color" value="#ffffff"></label>
+        <label>آیکون برنامه (اختیاری)<input id="appIcon" type="file" accept=".png,.jpg,.jpeg,image/png,image/jpeg"></label>
+        <label>تصویر شروع (اختیاری)<input id="splashImage" type="file" accept=".png,.jpg,.jpeg,image/png,image/jpeg"></label>
+        <div class="toggle-row"><div><b>نمایش تمام‌صفحه</b><small>محتوا زیر نوارهای سیستم نمایش داده شود.</small></div><input id="fullScreen" type="checkbox"></div>
+        <div class="toggle-row"><div><b>فعال‌سازی JavaScript</b><small>برای اجرای برنامه‌های وب معمولاً لازم است.</small></div><input id="javascriptEnabled" type="checkbox" checked></div>
+        <div class="toggle-row"><div><b>ذخیره‌سازی آفلاین</b><small>اجازه استفاده از فضای ذخیره‌سازی وب در دستگاه.</small></div><input id="offlineStorage" type="checkbox" checked></div>
+        <div class="toggle-row"><div><b>دسترسی اینترنت</b><small>برای API، منابع آنلاین و شبکه.</small></div><input id="allowInternet" type="checkbox" checked></div>
+      </section>
+
+      <section class="section-heading"><div><span class="eyebrow">STEP 03</span><h2>قابلیت‌های بومی و مجوزها</h2></div><span class="muted">فقط موارد موردنیاز را فعال کنید</span></section>
+      <section class="panel permission-grid">
+        <label class="permission"><input type="checkbox" id="networkState" checked><span><b>وضعیت شبکه</b><small>ACCESS_NETWORK_STATE</small></span></label>
+        <label class="permission"><input type="checkbox" id="notifications"><span><b>اعلان‌ها</b><small>POST_NOTIFICATIONS</small></span></label>
+        <label class="permission"><input type="checkbox" id="vibrate"><span><b>لرزش</b><small>VIBRATE</small></span></label>
+        <label class="permission"><input type="checkbox" id="foregroundService"><span><b>سرویس پیش‌زمینه</b><small>برای کار طولانی و اعلان دائمی</small></span></label>
+        <label class="permission"><input type="checkbox" id="bootReceiver"><span><b>یادآوری پس از روشن‌شدن گوشی</b><small>بدون شروع خودکار سرویس ممنوع‌شده</small></span></label>
+        <label class="permission"><input type="checkbox" id="nativeBridge"><span><b>پل JavaScript ↔ Kotlin</b><small>فقط برای محتوای مورداعتماد</small></span></label>
+      </section>
+      <div class="warning-note" id="bridgeWarning">پل بومی فقط برای فایل‌هایی فعال می‌شود که منبع آن‌ها را می‌شناسید و به آن اعتماد دارید. کدهای شخص ثالث می‌توانند از امکانات پل استفاده کنند.</div>
+
+      <section class="section-heading" id="rubika"><div><span class="eyebrow">OPTIONAL MODE</span><h2>Rubika Bot Mode</h2></div><span class="pill pill-purple">ویژه AppMint</span></section>
+      <section class="panel bot-panel">
+        <div><b>موتور مدیریت ربات روبیکا</b><p>پل API، نگهداری رمزنگاری‌شده توکن و Polling با فاصله پایه ۵ ثانیه.</p></div>
+        <label class="switch-label"><input id="rubikaMode" type="checkbox"><span>فعال‌سازی حالت ربات</span></label>
+        <div class="warning-note">اجرای پس‌زمینه تضمین‌شده نیست. در Android 15 و بالاتر، سرویس dataSync سقف ۶ ساعت در هر ۲۴ ساعت دارد و پس از راه‌اندازی مجدد گوشی خودکار آغاز نمی‌شود. در نسخه فعلی، هنگام بسته بودن WebView فقط updateها صف می‌شوند و کد JavaScript ربات اجرا نمی‌شود.</div>
+      </section>
+
+      <section class="section-heading"><div><span class="eyebrow">STEP 04</span><h2>امضای APK</h2></div><span class="muted">کلید متعلق به خودتان</span></section>
+      <section class="panel form-grid signing-grid">
+        <label class="wide">فایل کلید امضا (JKS / KEYSTORE)<input id="keystoreFile" type="file" accept=".jks,.keystore"></label>
+        <label>نام کلید<input id="keyAlias" dir="ltr" autocomplete="off"></label>
+        <label>رمز keystore<input id="storePassword" type="password" autocomplete="new-password"></label>
+        <label>رمز کلید<input id="keyPassword" type="password" autocomplete="new-password"></label>
+        <p class="security-text wide">فایل کلید فقط برای همان Job به موتور ساخت ارسال می‌شود و در سورس پروژه یا گزارش‌ها درج نمی‌شود. سرویس ساخت را فقط روی سرور خصوصی و HTTPS اجرا کنید.</p>
+      </section>
+
+      <section class="section-heading"><div><span class="eyebrow">BUILD SERVICE</span><h2>اتصال به موتور ساخت</h2></div><span class="muted">سرویس خصوصی خودتان</span></section>
+      <section class="panel form-grid service-grid">
+        <label>نشانی سرویس<input id="apiBase" value="http://127.0.0.1:8000" dir="ltr" placeholder="https://build.example.com"></label>
+        <label>کلید دسترسی سرویس<input id="apiKey" type="password" autocomplete="off" placeholder="API Key" dir="ltr"></label>
+        <div class="wide row-actions"><button class="btn btn-secondary" id="testServiceBtn">آزمایش اتصال</button><span id="serviceStatus" class="muted">نشانی و کلید را وارد کنید.</span></div>
+      </section>
+
+      <section class="build-panel"><div class="build-copy"><span class="eyebrow">FINAL STEP</span><h2>آماده ساخت APK هستید؟</h2><p>پس از اعتبارسنجی تنظیمات، پروژه به سرویس Gradle خصوصی شما ارسال می‌شود.</p></div><div class="build-action"><button class="btn btn-primary" id="buildBtn" disabled>ساخت APK نهایی <span>←</span></button><div class="progress hidden" id="progress"><div class="progress-bar" id="progressBar"></div></div><small id="buildStatus">تا قبل از اتصال سرویس، ساخت غیرفعال است.</small><a class="download-link hidden" id="downloadLink" href="#">دانلود APK نهایی</a></div></section>
+      <footer>MintPack Studio · ابزار بسته‌بندی وب به اندروید · <span>ساخت امن، بدون APK نمایشی</span></footer>
+    </main>
+  </div>
+  <script src="./app.js"></script>
+</body>
+</html>

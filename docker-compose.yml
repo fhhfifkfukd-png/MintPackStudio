@@ -1,0 +1,31 @@
+services:
+  mintpack-builder:
+    build:
+      context: .
+      dockerfile: service/Dockerfile
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      MINTPACK_API_KEY: ${MINTPACK_API_KEY:?set a 32+ character key in .env}
+      MINTPACK_DATA_DIR: /data
+      ANDROID_SDK_ROOT: /opt/android-sdk
+      ANDROID_HOME: /opt/android-sdk
+      GRADLE_BIN: gradle
+      MINTPACK_CORS_ORIGINS: ${MINTPACK_CORS_ORIGINS:-http://localhost:8080,http://127.0.0.1:8080,https://appassets.androidplatform.net}
+      BUILD_WORKERS: ${BUILD_WORKERS:-1}
+      MAX_PENDING_JOBS: ${MAX_PENDING_JOBS:-3}
+    volumes:
+      - ./data:/data
+      - ${ANDROID_SDK_ROOT_HOST:-./android-sdk}:/opt/android-sdk:ro
+      - gradle-cache:/home/gradle/.gradle
+    read_only: true
+    tmpfs:
+      - /tmp:size=512m
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    restart: unless-stopped
+
+volumes:
+  gradle-cache:
