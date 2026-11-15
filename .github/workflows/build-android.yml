@@ -1,3 +1,4 @@
+
 name: MintPack Android Debug APK
 
 on:
@@ -20,10 +21,13 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+
       - name: نصب وابستگی‌های تست
         run: pip install -r requirements-dev.txt
+
       - name: اجرای تست‌ها
         run: PYTHONPATH=. pytest -q service/tests
+
       - name: بررسی JavaScript
         run: node --check studio-web/app.js
 
@@ -34,7 +38,10 @@ jobs:
           java-version: '17'
 
       - name: نصب Android SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
+        with:
+          packages: 'platform-tools'
+
       - name: نصب پلتفرم و Build Tools
         run: sdkmanager "platforms;android-36" "build-tools;36.0.0"
 
@@ -62,3 +69,4 @@ jobs:
             android-template/app/build/reports/**
           if-no-files-found: warn
           retention-days: 7
+          
